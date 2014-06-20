@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/codenameyau/threejs-boilerplate",
   "devDependencies": {
-    "gulp": "^3.8.1"
+    "gulp": "^3.8.1",
+    "gulp-uglifyjs": "^0.3.0"
   }
 }
