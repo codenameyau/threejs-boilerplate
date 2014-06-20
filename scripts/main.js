@@ -1,16 +1,14 @@
 /*-------JSHint Directives-------*/
 /* global THREE                  */
+/* global SETTINGS               */
 /*-------------------------------*/
 'use strict';
 
 
-/*********************************
- * Global Variables and Settings *
- *********************************/
-var containerID = '#canvas-body';
-var scene, camera, controls, renderer;
+/*******************
+ * Manage Settings *
+ *******************/
 
-// Camera settings
 var CAMERA = {
   fov : 45,
   near : 1,
@@ -20,9 +18,8 @@ var CAMERA = {
   zoomZ : 40,
 };
 
-// OrbitControls settings
 var CONTROLS = {
-  enabled: true,
+  enabled : true,
   userPan : true,
   userPanSpeed : 1,
   minDistance : 10.0,
@@ -30,10 +27,15 @@ var CONTROLS = {
   maxPolarAngle : (Math.PI/180) * 80,
 };
 
-// Renderer settings
 var RENDERER = {
   antialias : true,
 };
+
+
+/********************
+ * Global Variables *
+ ********************/
+var scene, camera, controls, renderer;
 
 
 /********************
