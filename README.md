@@ -1,9 +1,11 @@
 threejs-boilerplate
 ===================
 
-Three.js starter project with common plugins. This repository does not contain
-scaffolding nor build tools. Minimalism is the intended goal. You should be able
-to drag and drop files where they are needed.
+Three.js minimal starter project with common plugins. Many Three.js plugins do
+not have bower packages, which is why these plugins can be found and added
+in `scripts/lib/plugins`.
+
+You should be able to drag and drop files where they are needed.
 
 
 ###Instructions
@@ -20,3 +22,4 @@ These are the instructions to locally start a Three.js project with this boilerp
 * Lastly, drag and drop the files in this repository into the `app/` directory
 * You might need to make a few changes in `index.html` for `bower_components`
 * **Optional:** turn off JSHint in your gruntfile.js or gulpfile.js
+
