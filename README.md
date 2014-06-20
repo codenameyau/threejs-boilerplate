@@ -25,7 +25,7 @@ Then, run either command:
 Visit in your browser: `localhost:9000`
 
 
-#####Deployment
+###Deployment
 Before deploying your project, run: `gulp`. This will generate a `dist/` folder
 that contains a concatenated and minified version of your project files.
 
