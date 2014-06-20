@@ -1,25 +1,29 @@
 threejs-boilerplate
 ===================
 
-Three.js minimal starter project with common plugins. Many Three.js plugins do
-not have bower packages, which is why these plugins can be found and added
-in `scripts/lib/plugins`.
-
-You should be able to drag and drop files where they are needed.
+Three.js minimal starter project with common plugins for users that aren't
+familiar with `grunt`, `bower`, `npm`, `gulp`, etc... Since many Three.js plugins
+and shaders do not have bower packages, these files are included in `scripts/lib/`.
 
 
-###Instructions
-These are the instructions to locally start a Three.js project with this boilerplate.
+###Getting Started
+These are the instructions to start a Three.js project with this boilerplate:
 
-#####Easiest Method
+#####Easiest method
 * Clone this repository
 * Run: `python -m SimpleHTTPServer 9000`
-* You should have a server running at `localhost:9000`
 
-#####Yeoman Build
-* First build a project with Yeoman and [generator-gulp-webapp](https://github.com/yeoman/generator-gulp-webapp)
-* Then run `bower install threejs --save` to grab a copy of Three.js
-* Lastly, drag and drop the files in this repository into the `app/` directory
-* You might need to make a few changes in `index.html` for `bower_components`
-* **Optional:** turn off JSHint in your gruntfile.js or gulpfile.js
+#####Alternative method
+You can use Yeoman with generator-webapp-gulp automate your build and
+deployment process. This method is recommended for larger Three.js projects.
 
+* Create a new folder and build your project with `yo`
+* Move files to where they are needed in `app/`
+* Update `index.html` to include any additional `bower_components` scripts
+* Run: `gulp watch` to run your project locally with livereload
+
+Before deploying your project, run: `gulp`. This will generate a `dist/` folder
+that contains a minified and concatenated version of your project files.
+
+###Future Tasks
+* Create a Yeoman generator to replace the alternative method.

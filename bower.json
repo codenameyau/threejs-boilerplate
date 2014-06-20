@@ -7,7 +7,9 @@
   ],
   "description": "Three.js starter project",
   "keywords": [
-    "threejs"
+    "threejs",
+    "boilerplate",
+    "starter"
   ],
   "license": "MIT",
   "private": true,
@@ -17,5 +19,7 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+  }
 }
