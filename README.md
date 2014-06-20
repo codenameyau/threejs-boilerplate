@@ -3,17 +3,27 @@ threejs-boilerplate
 
 Three.js minimal starter project with useful Three.js plugins.
 
-This repository is suited for users that aren't familiar with grunt, bower, gulp, npm, etc...
-Since many Three.js plugins and shaders do not have bower packages,
-these files are included in `scripts/lib/`.
+Since many Three.js plugins and shaders do not have individual bower packages,
+bower is not included locally. These files are instead found in `scripts/lib/`.
 
 
 ###Getting Started
 Follow these instructions to start a Three.js project with this boilerplate:
 
-#####Easiest method
+#####Installation
 * Clone this repository
-* Run: `python -m SimpleHTTPServer 9000`
+* Run: `npm install`
+
+
+#####Runing locally
+If you haven't already, install: `npm install http-server -g`
+
+Then, run either command:
+* Nodejs (faster): `http-server -p 9000`
+* Python (alternative): `python -m SimpleHTTPServer 9000`
+
+Visit in your browser: `localhost:9000`
+
 
 #####Alternative method
 You can use Yeoman with [generator-webapp-gulp](https://github.com/yeoman/generator-webapp)
