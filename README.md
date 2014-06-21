@@ -44,7 +44,3 @@ To use it, follow these steps:
 * Run: `npm install gulp-imgagemin --save-dev`
 * Update `gulpfile.js`
 
-
-###Tasks
-* Fix black crate at start
-* Enable JSHint in sublime

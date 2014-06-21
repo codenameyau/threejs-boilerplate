@@ -1,5 +1,5 @@
 /*-------JSHint Directives-------*/
-/* global THREE, Stats           */
+/* global THREE, Stats, dat      */
 /*-------------------------------*/
 'use strict';
 
@@ -7,6 +7,7 @@
 /*******************
  * Manage Settings *
  *******************/
+
 var CAMERA = {
   fov : 45,
   near : 1,
@@ -33,16 +34,21 @@ var RENDERER = {
 /********************
  * Global Variables *
  ********************/
-// Three.js built-in
+
+// Built-in
 var scene, camera, renderer;
 
 // Plugins
-var controls, stats;
+var controls, stats, gui;
+
+// Scene objects
+var crate;
 
 
 /********************
  * Helper Functions *
  ********************/
+
 function degToRad(degrees) {
   return Math.PI/180 * degrees;
 }
@@ -72,9 +78,11 @@ function basicCrate(size) {
   return crate;
 }
 
+
 /***********************
  * Rendering Functions *
  ***********************/
+
 function renderScene() {
   renderer.render( scene, camera );
 }
@@ -93,7 +101,7 @@ function animateScene() {
 function resizeWindow() {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
-  renderer.setSize( window.innerWidth, window.innerHeight );
+  renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
 function addToDOM(object) {
@@ -101,30 +109,41 @@ function addToDOM(object) {
   container.appendChild(object);
 }
 
+
 /************************
  * Scene Initialization *
  ************************/
+
 function initializeScene() {
 
-  // Scene and resize listener
+  /*************************
+   * Initialize Essentials *
+   *************************/
+
+  // Scene and window resize listener
   scene = new THREE.Scene();
   var canvasWidth  = window.innerWidth;
   var canvasHeight = window.innerHeight;
   window.addEventListener('resize', resizeWindow, false);
 
-  // Camera and initial view
+  // Camera and set initial view
   var aspectRatio  = canvasWidth/canvasHeight;
   camera = new THREE.PerspectiveCamera( CAMERA.fov, aspectRatio, CAMERA.near, CAMERA.far );
   camera.position.set( CAMERA.zoomX, CAMERA.zoomY, CAMERA.zoomZ );
   camera.lookAt(scene.position);
   scene.add(camera);
 
-  // WebGL renderer
+  // Add WebGL renderer to DOM
   renderer = new THREE.WebGLRenderer(RENDERER);
   renderer.setSize(canvasWidth, canvasHeight);
   addToDOM(renderer.domElement);
 
-  // OrbitControls with mouse
+
+  /**********************
+   * Initialize Plugins *
+   **********************/
+
+  // OrbitControls using mouse
   controls = new THREE.OrbitControls(camera);
   for (var key in CONTROLS) { controls[key] = CONTROLS[key]; }
   controls.addEventListener('change', renderScene);
@@ -135,22 +154,29 @@ function initializeScene() {
   stats.domElement.style.position = 'absolute';
   stats.domElement.style.bottom = '0px';
   stats.domElement.style.zIndex = 100;
-  addToDOM( stats.domElement );
-  console.log(stats);
+  addToDOM(stats.domElement);
 
-  // Light sources
+  // Dat gui (top right controls)
+  gui = new dat.GUI( {height: 5 * 32 - 1} );
+
+
+  /***************
+   * Custom Code *
+   ***************/
+
+  // Example: light sources
   var lightAmbient = new THREE.AmbientLight(0x666666);
   var lightSource = new THREE.PointLight(0x888888);
   lightSource.position.set(0, 50, 80);
   scene.add(lightAmbient);
   scene.add(lightSource);
 
-  // Starter floor grid
+  // Example: basic floor grid
   scene.add(basicFloorGrid(20, 2));
 
-  // Basic crate
+  // Example: crate with texture
   var crateSize = 5;
-  var crate = basicCrate(crateSize);
+  crate = basicCrate(crateSize);
   crate.position.set(0, crateSize/2, 0);
   scene.add(crate);
 
@@ -160,5 +186,6 @@ function initializeScene() {
 /**********************
  * Render and Animate *
  **********************/
+
 initializeScene();
 animateScene();
