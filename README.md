@@ -7,6 +7,9 @@ Since many Three.js plugins and shaders do not have individual bower packages,
 bower is not included locally. Instead, Three.js, its plugins, and dat-gui can
 be found in `assets/js/lib/`.
 
+###Live Demo
+Can be [found here](https://codenameyau.github.io/threejs-boilerplate/)
+
 ###Getting Started
 Follow these instructions to start a Three.js project with this boilerplate:
 
