@@ -1,5 +1,5 @@
 /*-------JSHint Directives-------*/
-/* global THREE                  */
+/* global THREE, Stats           */
 /*-------------------------------*/
 'use strict';
 
@@ -7,7 +7,6 @@
 /*******************
  * Manage Settings *
  *******************/
-
 var CAMERA = {
   fov : 45,
   near : 1,
@@ -27,14 +26,18 @@ var CONTROLS = {
 };
 
 var RENDERER = {
-  antialias : true,
+  antialias : false,
 };
 
 
 /********************
  * Global Variables *
  ********************/
-var scene, camera, controls, renderer;
+// Three.js built-in
+var scene, camera, renderer;
+
+// Plugins
+var controls, stats;
 
 
 /********************
@@ -62,10 +65,10 @@ function basicFloorGrid(lines, steps, gridColor) {
 function basicCrate(size) {
   size = size || 5;
   var textureImage = 'assets/img/texture/crate-small.jpg';
-  var geometry = new THREE.BoxGeometry(size, size, size);
-  var crateTexture = new THREE.ImageUtils.loadTexture(textureImage);
+  var geometry = new THREE.BoxGeometry( size, size, size );
+  var crateTexture = new THREE.ImageUtils.loadTexture( textureImage );
   var crateMaterial = new THREE.MeshLambertMaterial({ map: crateTexture });
-  var crate = new THREE.Mesh(geometry, crateMaterial);
+  var crate = new THREE.Mesh( geometry, crateMaterial );
   return crate;
 }
 
@@ -76,10 +79,15 @@ function renderScene() {
   renderer.render( scene, camera );
 }
 
+function updateScene() {
+  stats.update();
+  controls.update();
+}
+
 function animateScene() {
   window.requestAnimationFrame( animateScene );
   renderScene();
-  controls.update();
+  updateScene();
 }
 
 function resizeWindow() {
@@ -88,9 +96,9 @@ function resizeWindow() {
   renderer.setSize( window.innerWidth, window.innerHeight );
 }
 
-function addToDOM() {
+function addToDOM(object) {
   var container = document.getElementById('canvas-body');
-  container.appendChild( renderer.domElement );
+  container.appendChild(object);
 }
 
 /************************
@@ -106,19 +114,29 @@ function initializeScene() {
 
   // Camera and initial view
   var aspectRatio  = canvasWidth/canvasHeight;
-  camera = new THREE.PerspectiveCamera(CAMERA.fov, aspectRatio, CAMERA.near, CAMERA.far);
-  camera.position.set(CAMERA.zoomX, CAMERA.zoomY, CAMERA.zoomZ);
+  camera = new THREE.PerspectiveCamera( CAMERA.fov, aspectRatio, CAMERA.near, CAMERA.far );
+  camera.position.set( CAMERA.zoomX, CAMERA.zoomY, CAMERA.zoomZ );
+  camera.lookAt(scene.position);
   scene.add(camera);
+
+  // WebGL renderer
+  renderer = new THREE.WebGLRenderer(RENDERER);
+  renderer.setSize(canvasWidth, canvasHeight);
+  addToDOM(renderer.domElement);
 
   // OrbitControls with mouse
   controls = new THREE.OrbitControls(camera);
   for (var key in CONTROLS) { controls[key] = CONTROLS[key]; }
   controls.addEventListener('change', renderScene);
 
-  // WebGL renderer
-  renderer = new THREE.WebGLRenderer(RENDERER);
-  renderer.setSize(canvasWidth, canvasHeight);
-  addToDOM();
+  // Stats fps/ms box
+  stats = new Stats();
+  stats.setMode(0); // 0 -> fps, 1 -> ms
+  stats.domElement.style.position = 'absolute';
+  stats.domElement.style.bottom = '0px';
+  stats.domElement.style.zIndex = 100;
+  addToDOM( stats.domElement );
+  console.log(stats);
 
   // Light sources
   var lightAmbient = new THREE.AmbientLight(0x666666);
@@ -135,6 +153,7 @@ function initializeScene() {
   var crate = basicCrate(crateSize);
   crate.position.set(0, crateSize/2, 0);
   scene.add(crate);
+
 }
 
 

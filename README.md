@@ -1,7 +1,7 @@
 threejs-boilerplate
 ===================
 
-Three.js minimal starter project with useful Three.js plugins.
+Three.js minimal starter project with useful plugins.
 
 Since many Three.js plugins and shaders do not have individual bower packages,
 bower is not included locally. Instead, Three.js, its plugins, and dat-gui can
@@ -43,3 +43,8 @@ To use it, follow these steps:
 
 * Run: `npm install gulp-imgagemin --save-dev`
 * Update `gulpfile.js`
+
+
+###Tasks
+* Fix black crate at start
+* Enable JSHint in sublime
