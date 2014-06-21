@@ -4,7 +4,7 @@ threejs-boilerplate
 Three.js minimal starter project with useful Three.js plugins.
 
 Since many Three.js plugins and shaders do not have individual bower packages,
-bower is not included locally. Instead, Three.js and plugins for it can
+bower is not included locally. Instead, Three.js, its plugins, and dat-gui can
 be found in `assets/js/lib/`.
 
 ###Getting Started
@@ -28,8 +28,11 @@ Visit your browser: `localhost:9000`
 ###Deployment
 Before deploying your project, run: `gulp`
 
-This will generate a `dist/` folder that contains a concatenated and
-minified version of your project files. Use that folder for deployment.
+This will generate a `dist/` folder that contains a concatenated and minified
+version of your JavaScript files. Use the `dist/` folder for deployment.
+
+Update `gulpfile.js` to add additional tasks.
+
 
 ###Future Tasks
-* Create a Yeoman generator to replace the alternative method mention above.
+* Add `gulp-imgagemin` to `gulpfile.js`
