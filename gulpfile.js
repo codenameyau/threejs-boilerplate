@@ -1,6 +1,7 @@
 /*!
  * threejs-boilerplate - gulpfile.js
  * Description: Generates dist folder for deployment
+ * Feel free to use gulp-imagemin to compress images
  *
  * Run: gulp
  */
@@ -13,6 +14,8 @@ var uglify = require('gulp-uglify');
 var usemin = require('gulp-usemin');
 var rev = require('gulp-rev');
 
+
+// File paths
 var PATHS = {
   images : 'assets/img/**',
 };
@@ -35,7 +38,7 @@ gulp.task('usemin', ['clean'], function() {
 // Copy static images (todo: gulp-imagemin)
 gulp.task('images', ['clean'], function() {
   gulp.src(PATHS.images)
-    .pipe(gulp.dest('dist/img'));
+    .pipe(gulp.dest('dist/assets/img'));
 });
 
 // Generate dist folder for production

@@ -33,6 +33,13 @@ version of your JavaScript files. Use the `dist/` folder for deployment.
 
 Update `gulpfile.js` to add additional tasks.
 
+#####Minimizing image/texture quality
+If you are concern about image sizes for production, you can install and use
+`gulp-imagemin`, which will reduce the image size while optimizing for image quality.
+More information can be [found here](https://github.com/rflynn/imgmin#summary).
+By default, `gulp-imagemin` is not included as a dependency.
 
-###Future Tasks
-* Add `gulp-imgagemin` to `gulpfile.js`
+To use it, follow these steps:
+
+* Run: `npm install gulp-imgagemin --save-dev`
+* Update `gulpfile.js`
