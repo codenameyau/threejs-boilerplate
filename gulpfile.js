@@ -8,15 +8,15 @@
 
 // Import node packages
 var gulp = require('gulp');
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglifyjs');
 var rimraf = require('rimraf');
-
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
+var usemin = require('gulp-usemin');
 
 // Configure paths
 var PATHS = {
 
-  // Order: lib -> plugin -> main
+  // Order: lib, plugins, main
   scripts : [
     'assets/js/lib/*.js',
     'assets/js/lib/**/*.js',
@@ -36,19 +36,27 @@ gulp.task('clean', function(cb) {
 
 
 // Concat and minify scripts
-gulp.task('vendor', function() {
-  return gulp.src(PATHS.vendor)
+gulp.task('scripts', ['clean'], function() {
+  return gulp.src(PATHS.scripts)
+    .pipe(concat('main.js'))
     .pipe(uglify())
-    .pipe(gulp.dest('dist/js/vendor.js'));
+    .pipe(gulp.dest('dist/js/'));
 });
 
+// Copy main.css into dist
+gulp.task('css', ['clean'], function() {
+  gulp.src(PATHS.stylesheets)
+    .pipe(gulp.dest('dist/css/'));
+})
 
-// Rerun the task when a file changes
-gulp.task('watch', function() {
-  gulp.watch(paths.scripts, ['scripts']);
-  gulp.watch(paths.images, ['images']);
+// Replace build tags in index.html
+gulp.task('usemin', ['clean'], function(){
+  gulp.src('index.html')
+    .pipe(usemin({
+      js: [uglify()]
+    }))
+    .pipe(gulp.dest('dist/'));
 });
-
 
 // Generate dist folder for production
-gulp.task('default', ['clean']);
+gulp.task('default', ['scripts', 'css', 'usemin']);

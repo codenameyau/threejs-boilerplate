@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css assets/css/main.css -->
+
+    <!-- build:css css/style.css -->
     <link rel="stylesheet" href="assets/css/main.css">
     <!-- endbuild -->
 
@@ -22,23 +23,17 @@
     <div id="canvas-body">
     </div>
 
-    <!-- Vendor minified -->
+    <!-- build:js js/vendor.js -->
     <script src="assets/js/lib/dat.gui.min.js"></script>
     <script src="assets/js/lib/three.min.js"></script>
-    <!-- End vendor -->
+    <!-- endbuild -->
 
-    <!-- Plugins -->
+    <!-- build:js js/plugins.js -->
     <script src="assets/js/lib/plugins/KeyboardState.js"></script>
     <script src="assets/js/lib/plugins/OrbitControls.js"></script>
-    <!-- End plugins -->
+    <!-- endbuild -->
 
-    <!-- Postprocessing -->
-    <!-- End postprocessing -->
-
-    <!-- Shaders -->
-    <!-- End shaders  -->
-
-    <!-- build:js assets/js/main.js -->
+    <!-- build:js js/main.js -->
     <script src="assets/js/main.js"></script>
     <!-- endbuild -->
 

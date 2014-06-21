@@ -22,12 +22,14 @@ Then, run either command:
 * Nodejs (faster): `http-server -p 9000`
 * Python (alternative): `python -m SimpleHTTPServer 9000`
 
-Visit in your browser: `localhost:9000`
+Visit your browser: `localhost:9000`
 
 
 ###Deployment
-Before deploying your project, run: `gulp`. This will generate a `dist/` folder
-that contains a concatenated and minified version of your project files.
+Before deploying your project, run: `gulp`
+
+This will generate a `dist/` folder that contains a concatenated and
+minified version of your project files. Use that folder for deployment.
 
 ###Future Tasks
 * Create a Yeoman generator to replace the alternative method mention above.
