@@ -11,10 +11,10 @@
 var CAMERA = {
   fov : 45,
   near : 1,
-  far : 2000,
+  far : 1000,
   zoomX : 0,
   zoomY : 20,
-  zoomZ : 40,
+  zoomZ : 50,
 };
 
 var CONTROLS = {
@@ -59,6 +59,15 @@ function basicFloorGrid(lines, steps, gridColor) {
   return new THREE.Line(floorGrid, gridLine, THREE.LinePieces);
 }
 
+function basicCrate(size) {
+  size = size || 5;
+  var textureImage = 'assets/img/texture/crate-small.jpg';
+  var geometry = new THREE.BoxGeometry(size, size, size);
+  var crateTexture = new THREE.ImageUtils.loadTexture(textureImage);
+  var crateMaterial = new THREE.MeshLambertMaterial({ map: crateTexture });
+  var crate = new THREE.Mesh(geometry, crateMaterial);
+  return crate;
+}
 
 /***********************
  * Rendering Functions *
@@ -69,6 +78,7 @@ function renderScene() {
 
 function animateScene() {
   window.requestAnimationFrame( animateScene );
+  renderScene();
   controls.update();
 }
 
@@ -76,7 +86,6 @@ function resizeWindow() {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize( window.innerWidth, window.innerHeight );
-  renderScene();
 }
 
 function addToDOM() {
@@ -112,8 +121,8 @@ function initializeScene() {
   addToDOM();
 
   // Light sources
-  var lightAmbient = new THREE.AmbientLight(0x5a5a5a);
-  var lightSource = new THREE.PointLight(0x7a7a7a);
+  var lightAmbient = new THREE.AmbientLight(0x666666);
+  var lightSource = new THREE.PointLight(0x888888);
   lightSource.position.set(0, 50, 80);
   scene.add(lightAmbient);
   scene.add(lightSource);
@@ -121,6 +130,11 @@ function initializeScene() {
   // Starter floor grid
   scene.add(basicFloorGrid(20, 2));
 
+  // Basic crate
+  var crateSize = 5;
+  var crate = basicCrate(crateSize);
+  crate.position.set(0, crateSize/2, 0);
+  scene.add(crate);
 }
 
 

@@ -39,4 +39,4 @@ gulp.task('images', ['clean'], function() {
 });
 
 // Generate dist folder for production
-gulp.task('default', ['clean', 'usemin']);
+gulp.task('default', ['clean', 'usemin', 'images']);
