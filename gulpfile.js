@@ -17,17 +17,20 @@ var rev = require('gulp-rev');
 
 // File paths
 var PATHS = {
-  images : 'assets/img/**',
+  images : 'app/assets/img/**',
+  index : 'app/index.html',
+  favicon : 'app/favicon.ico',
 };
+
 
 // Remove last generated dist folder
 gulp.task('clean', function(cb) {
   rimraf('dist/', cb);
 });
 
-// Replace build tags in index.html
+// Replace build with concat files in index.html
 gulp.task('usemin', ['clean'], function() {
-  gulp.src('index.html')
+  gulp.src(PATHS.index)
     .pipe(usemin({
       css: [rev()],
       js: [uglify(), rev()],
@@ -37,6 +40,8 @@ gulp.task('usemin', ['clean'], function() {
 
 // Copy static images (todo: gulp-imagemin)
 gulp.task('images', ['clean'], function() {
+  gulp.src(PATHS.favicon)
+    .pipe(gulp.dest('dist/'));
   gulp.src(PATHS.images)
     .pipe(gulp.dest('dist/assets/img'));
 });
