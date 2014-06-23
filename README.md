@@ -8,7 +8,8 @@ bower is not included locally. Instead these files can be found in `app/assets/j
 Gulp is used to generate a `dist` folder that contains a minified and optimized
 version of your code.
 
-####[Live Demo](https://codenameyau.github.io/threejs-boilerplate/)
+####Live Demo
+[Click here to view](https://codenameyau.github.io/threejs-boilerplate/)
 
 
 ##Getting Started
@@ -16,6 +17,8 @@ Follow these instructions to start a Three.js project with this boilerplate:
 
 #####Installation
 * Clone this repository and setup gulp
+* Update project information in `package.json`
+* Delete then initialize your own `.git/` repository
 * Run: `npm install`
 
 
