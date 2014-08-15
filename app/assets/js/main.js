@@ -1,5 +1,5 @@
 /*-------JSHint Directives-------*/
-/* global THREE, Stats, dat      */
+/* global THREE, dat             */
 /*-------------------------------*/
 'use strict';
 
@@ -7,7 +7,6 @@
 /*******************
  * Manage Settings *
  *******************/
-
 var CAMERA = {
   fov : 45,
   near : 1,
@@ -34,12 +33,11 @@ var RENDERER = {
 /********************
  * Global Variables *
  ********************/
-
 // Built-in
 var scene, camera, renderer;
 
 // Plugins
-var controls, stats, gui;
+var controls, gui;
 
 // Scene objects
 var crate;
@@ -48,11 +46,6 @@ var crate;
 /********************
  * Helper Functions *
  ********************/
-
-function degToRad(degrees) {
-  return Math.PI/180 * degrees;
-}
-
 function basicFloorGrid(lines, steps, gridColor) {
   lines = lines || 20;
   steps = steps || 2;
@@ -82,13 +75,11 @@ function basicCrate(size) {
 /***********************
  * Rendering Functions *
  ***********************/
-
 function renderScene() {
   renderer.render( scene, camera );
 }
 
 function updateScene() {
-  stats.update();
   controls.update();
 }
 
@@ -113,7 +104,6 @@ function addToDOM(object) {
 /************************
  * Scene Initialization *
  ************************/
-
 function initializeScene() {
 
   /*************************
@@ -148,14 +138,6 @@ function initializeScene() {
   for (var key in CONTROLS) { controls[key] = CONTROLS[key]; }
   controls.addEventListener('change', renderScene);
 
-  // Stats fps/ms box
-  stats = new Stats();
-  stats.setMode(0); // 0 -> fps, 1 -> ms
-  stats.domElement.style.position = 'absolute';
-  stats.domElement.style.bottom = '0px';
-  stats.domElement.style.zIndex = 100;
-  addToDOM(stats.domElement);
-
   // Dat gui (top right controls)
   gui = new dat.GUI( {height: 5 * 32 - 1} );
 
@@ -186,6 +168,5 @@ function initializeScene() {
 /**********************
  * Render and Animate *
  **********************/
-
 initializeScene();
 animateScene();

@@ -69,7 +69,7 @@ To use it, follow these steps:
 * [Intro to Pixel Shaders](http://www.airtightinteractive.com/2013/02/intro-to-pixel-shaders-in-three-js/) - Tutorial
 
 
-##Recommended Modeling Software
+##Recommended Computer Graphics Software
 
 Complete list can be found on [Wikipedia](https://en.wikipedia.org/wiki/List_of_3D_computer_graphics_software)
 
@@ -77,9 +77,10 @@ Complete list can be found on [Wikipedia](https://en.wikipedia.org/wiki/List_of_
 * [Clara.io](https://clara.io/) - Model. Animate. Render. Online.
 * [Verold](http://verold.com/) - Publish 3D models and apps with online visual editor
 
-####Free downloadable software
+####Open source modeling software
 * [Blender](http://www.blender.org/) - Free 3D graphics modeling and animation software
 * [Pixologic - Sculptris](http://pixologic.com/sculptris/) - Beginner version of ZBrush
+* [MeshLab](http://meshlab.sourceforge.net/) - Processing and editing meshes
 
 ####Proprietary and licensed
 * [Autodesk - 3ds Max](http://www.autodesk.com/products/autodesk-3ds-max/overview) - Modeling and rendering

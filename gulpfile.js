@@ -1,7 +1,8 @@
 /*!
  * threejs-boilerplate - gulpfile.js
- * Description: Generates dist folder for deployment
- * Feel free to use gulp-imagemin to compress images
+ *
+ * Description:
+ * Generates dist folder for deployment
  *
  * Run: gulp
  */
@@ -14,14 +15,12 @@ var uglify = require('gulp-uglify');
 var usemin = require('gulp-usemin');
 var rev = require('gulp-rev');
 
-
 // File paths
 var PATHS = {
   images : 'app/assets/img/**',
   index : 'app/index.html',
   favicon : 'app/favicon.ico',
 };
-
 
 // Remove last generated dist folder
 gulp.task('clean', function(cb) {
