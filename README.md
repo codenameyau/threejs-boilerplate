@@ -1,81 +1,43 @@
 threejs-boilerplate
 ===================
 
-Three.js minimal starter project with useful plugins.
+Three.js minimal starter project with OrbitControls, Dat GUI, and shaders.
 
-Since many Three.js plugins and shaders do not have individual bower packages,
-bower is not included locally. Instead these files can be found in `app/assets/js/lib/`.
-Gulp is used to generate a `dist` folder that contains a minified and optimized
-version of your code.
+A minified version of `three.js` is included `app/assets/js/lib/` since
+it takes forever to install with bower.
 
-####Live Demo
+###Live Demo
 [Click here to view](https://codenameyau.github.io/threejs-boilerplate/)
 
-
-##Getting Started
-Follow these instructions to start a Three.js project with this boilerplate:
-
-#####Installation
-* Clone this repository and setup gulp
-* Update project information in `package.json`
-* Delete then initialize your own `.git/` repository
-* Run: `npm install`
-
-
-#####Runing locally
-If you haven't already, run: `npm install http-server -g`
-
-Then, `cd app/` and run either command:
+###Runing locally
+First, `cd app/` and run either command:
 * Nodejs (faster): `http-server -p 9000`
 * Python (alternative): `python -m SimpleHTTPServer 9000`
 
-Visit your browser: `localhost:9000`
+Then, visit your browser: `localhost:9000`
+
+###Deployment
+Before deploying your project, you can concat and minify your script files with gulp.
+
+First run: `npm install` to download the dev dependencies in `package.json`
+Next run: `gulp`
+
+This will generate a `dist/` folder that you should use for deployment.
+
+Feel free to update `gulpfile.js` to add additional tasks.
 
 
-####Packages included
-* three.js
-* dat.gui.js
-* stats.js
+##Resources
 
-####Plugins included
-* OrbitControls.js
-* KeyboardState.js
-
-
-##Deployment
-Before deploying your project, run: `gulp`
-
-This will generate a `dist/` folder that contains a concatenated and minified
-version of your JavaScript files. Use the `dist/` folder for deployment.
-
-Update `gulpfile.js` to add additional tasks.
-
-#####Minimizing image/texture quality
-If you are concern about image sizes for production, you can install and use
-`gulp-imagemin`, which will reduce the image size while optimizing for image quality.
-More information can be [found here](https://github.com/rflynn/imgmin#summary).
-By default, `gulp-imagemin` is not included as a dependency.
-
-To use it, follow these steps:
-
-* Run: `npm install gulp-imgagemin --save-dev`
-* Then update `gulpfile.js`
-
-
-##Learn Three.js
+###Learning Three.js
+* [Udacity CS291](https://www.udacity.com/course/cs291) - Excellent Interactive 3D Graphics course
 * [Three.js Documentation](http://threejs.org/docs/#Manual/Introduction/Creating_a_scene) - Creating a scene
-* [Udacity CS291](https://www.udacity.com/course/cs291) - Interactive 3D Graphics course
 * [Stemkoski's Examples](https://stemkoski.github.io/Three.js/) - Set of basic Three.js examples
 * [Intro to Pixel Shaders](http://www.airtightinteractive.com/2013/02/intro-to-pixel-shaders-in-three-js/) - Tutorial
 
 
-##Recommended Computer Graphics Software
-
+###Computer Graphics Software
 Complete list can be found on [Wikipedia](https://en.wikipedia.org/wiki/List_of_3D_computer_graphics_software)
-
-####Built with three.js for the web
-* [Clara.io](https://clara.io/) - Model. Animate. Render. Online.
-* [Verold](http://verold.com/) - Publish 3D models and apps with online visual editor
 
 ####Open source modeling software
 * [Blender](http://www.blender.org/) - Free 3D graphics modeling and animation software
